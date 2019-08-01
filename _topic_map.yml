@@ -744,6 +744,23 @@ Topics:
 - Name: Exposing custom application metrics for autoscaling
   File: exposing-custom-application-metrics-for-autoscaling
 ---
+Name: Metering 
+Dir: metering
+Distros: openshift-enterprise,openshift-origin
+Topics:
+- Name: About metering
+  File: metering-about-metering
+- Name: Installing metering
+  File: metering-installing-metering
+- Name: Using metering
+  File: metering-using-metering
+- Name: Configuring and tuning metering
+  File: metering-config-and-tuning-metering
+- Name: Reports
+  File: metering-reports
+- Name: Troubleshooting
+  File: metering-troubleshooting
+---
 Name: Telemetry
 Dir: telemetry
 Distros: openshift-enterprise,openshift-origin
