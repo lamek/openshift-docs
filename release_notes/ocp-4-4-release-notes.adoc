@@ -2109,6 +2109,9 @@ might get stuck in the `CrashLoopBackOff` status. You can work around this
 issue by deleting the Elasticsearch deployments in sequence.
 (link:https://bugzilla.redhat.com/show_bug.cgi?id=1824006[*BZ#1824006*])
 
+* There is an issue when installing the Metering Operator through Operator Hub. A fix is planned for a future patch of {product-title}, however a link:https://github.com/kube-reporting/metering-operator/blob/master/Documentation/manual-install.md[manual installation of the Metering Operator is still currently supported].
+(link:https://bugzilla.redhat.com/show_bug.cgi?id=1829035[*BZ#1829035*])
+
 [id="ocp-4-4-asynchronous-errata-updates"]
 == Asynchronous errata updates
 
