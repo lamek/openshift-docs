@@ -1,0 +1,429 @@
+[id="moa-service-definition"]
+= {product-title} service definition
+include::modules/common-attributes.adoc[]
+:context: legal-notice
+
+toc::[]
+
+## Table of Contents
+
+1. [Account Management](#accounts)
+2. [Logging](#logging)
+3. [Monitoring](#monitoring)
+4. [Networking](#networking)
+5. [Storage](#storage)
+6. [Platform](#platform)
+7. [Security](#security)
+
+[id="moa-sd-account-management_{context}"]
+== Account Management
+
+[id="moa-sd-billing_{context}"]
+=== Billing
+
+Each Red Hat OpenShift Dedicated (OSD) cluster requires a minimum annual base cluster purchase, but there are two billing options available for each cluster: [Standard and Customer Cloud Subscription](https://www.openshift.com/dedicated/ccs) (CCS; previously known as Bring-Your-Own-Cloud or BYOC).
+
+Standard OpenShift Dedicated clusters are deployed in to their own cloud infrastructure accounts, each owned by Red Hat. Red Hat is responsible for this account, and cloud infrastructure costs are paid directly by Red Hat. The customer will only pay the Red Hat subscription costs.
+
+In the Customer Cloud Subscription model, the customer pays the cloud infrastructure provider directly for cloud costs and the cloud infrastructure account will be part of a customer’s Organization, with specific access granted to Red Hat. The customer will have restricted access to this account, but will be able to view billing and usage information. In this model, the customer will pay Red Hat for the CCS subscription and will pay the cloud provider for the cloud costs. It is the customer's responsibility to pre-purchase or provide Reserved Instance (RI) compute instances to ensure lower cloud infrastructure costs. (CCS for Google Cloud is not currently available)
+
+Additional resources may be purchased for an OpenShift Dedicated Cluster, including:
+
+* Additional Nodes (must be same type/size as existing application nodes)
+* Middleware (JBoss EAP, JBoss Fuse, etc.) - additional pricing based on specific middleware component
+* Additional Storage in increments of 500GB (non-CCS only)
+* Additional 12 TiB Network I/O (non-CCS only)
+* Load Balancers for Services are available in bundles of 4; enables non-HTTP/SNI traffic or non-standard ports (non-CCS only)
+
+[id="moa-sd-cluster-self-service_{context}"]
+=== Cluster Self-service
+
+Customers can create, scale, and delete their clusters from [OpenShift Cluster Manager](https://cloud.redhat.com/openshift/) (OCM), provided they've pre-purchased the necessary subscriptions.
+
+[id="moa-sd-cloud_providers_{context}"]
+=== Cloud Providers
+
+OpenShift Dedicated offers OpenShift Container Platform clusters as a managed service on the following cloud providers:
+
+* Amazon Web Services (AWS)
+* Google Cloud
+
+[id="moa-sd-compute_{context}"]
+==== Compute
+
+Single-AZ clusters require a minimum of 4 worker nodes deployed to a single availability zone. These 4 worker nodes are included in the base subscription.
+
+Multi-AZ clusters require a minimum of 9 worker nodes, 3 deployed to each of three availability zones. These 9 worker nodes are included in the base subscription, and additional nodes must be purchased in multiples of three in order to maintain proper node distribution.
+
+Worker nodes must all be the same type and size within a single OpenShift Dedicated cluster.
+
+Note: Worker node type/size cannot be changed once the cluster has been created.
+
+Master and infrastructure nodes are also provided by Red Hat. There are at least 3 master nodes that handle etcd and API related workloads. There are at least 3 infrastructure nodes that handle metrics, routing, web console and other workloads. Master and infrastructure nodes are strictly for Red Hat workloads to operate the service, and customer workloads are not permitted to be deployed on these nodes.
+
+Note: 1 vCPU core and 1 GiB of memory are reserved on each worker node to run processes required as part of the managed service. This includes but is not limited to audit log aggregation, metrics collection, DNS, image registry, and SDN.
+
+[id="moa-sd-compute-types_{context}"]
+==== Compute Types - AWS
+
+OpenShift Dedicated offers the following worker node types and sizes:
+
+General purpose
+
+* M5.xlarge (4 vCPU, 16 GiB)
+* M5.2xlarge (8 vCPU, 32 GiB)
+* M5.4xlarge (16 vCPU, 64 GiB)
+
+Memory-optimized
+
+* R5.xlarge (4 vCPU, 32 GiB)
+* R5.2xlarge (8 vCPU, 64 GiB)
+* R5.4xlarge (16 vCPU, 128 GiB)
+
+Compute-optimized
+
+* C5.2xlarge (8 vCPU, 16 GiB)
+* C5.4xlarge (16 vCPU, 32 GiB)
+
+[id="moa-sd-compute-types-gcp_{context}"]
+==== Compute Types - Google cloud
+
+OpenShift Dedicated offers the following worker node types and sizes on Google Cloud chosen to have a common CPU and memory capacity as other cloud instance types:
+
+General purpose
+
+* custom-4-16384 (4 vCPU, 16 GiB)
+* custom-8-32768 (8 vCPU, 32 GiB)
+* custom-16-65536 (16 vCPU, 64 GiB)
+
+Memory-optimized
+
+* custom-4-32768-ext (4 vCPU, 32 GiB)
+* custom-8-65536-ext (8 vCPU, 64 GiB)
+* custom-16-131072-ext (16 vCPU, 128 GiB)
+
+Compute-optimized
+
+* custom-8-16384 (8 vCPU, 16 GiB)
+* custom-16-32768 (16 vCPU, 32 GiB)
+
+[id="moa-sd-regions-and-availability_{context}"]
+==== Regions and Availability Zones
+
+All [AWS regions](https://docs.openshift.com/container-platform/4.3/installing/installing_aws/installing-aws-account.html#installation-aws-regions_installing-aws-account) supported by Red Hat OpenShift 4 are supported for OpenShift Dedicated. Note that the China and GovCloud (US) regions are not supported, regardless of their support on OpenShift 4.
+
+The following Google Cloud regions are currently supported:
+* asia-east1, Changhua County, Taiwan
+* asia-east2, Hong Kong
+* asia-northeast1, Tokyo, Japan
+* asia-south1, Mumbai, India
+* asia-southeast1, Jurong West, Singapore
+* europe-west1, St. Ghislain, Belgium
+* europe-west2, London, England, UK
+* europe-west4, Eemshaven, Netherlands
+* us-central1, Council Bluffs, Iowa, USA
+* us-east1, Moncks Corner, South Carolina, USA
+* us-east4, Ashburn, Northern Virginia, USA
+* us-west1, The Dalles, Oregon, USA
+* us-west2, Los Angeles, California, USA
+
+Multi-AZ clusters can only be deployed in regions with at least 3 AZs (see [AWS](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/) and [Google Cloud](https://cloud.google.com/compute/docs/regions-zones)).
+
+Each new OSD cluster is installed within a dedicated Virtual Private Cloud (VPC) in a single Region, with the option to deploy into a single Availability Zone (Single-AZ) or across multiple Availability Zones (Multi-AZ). This provides cluster-level network and resource isolation, and enables cloud-provider VPC settings, such as VPN connections and VPC Peering. Persistent volumes are backed by cloud block storage and are specific to the AZ in which they are provisioned. Persistent volumes do not bind to a volume until the associated pod resource is assigned into a specific AZ in order to prevent unschedulable pods. AZ-specific resources are only usable by resources in the same AZ.
+
+Note: The region and the choice of single or multi AZ cannot be changed once a cluster has been deployed.
+
+[id="moa-sd-sla_{context}"]
+=== Service Level Agreement (SLA)
+
+Any SLAs for the service itself are defined in Appendix 4 of the [Red Hat License Agreement](https://www.redhat.com/licenses/Appendix_4_Online_Global_20200406.pdf).
+
+SLAs for support response times are covered in the Support section of this document.
+
+[id="moa-sd-support_{context}"]
+=== Support
+
+OpenShift Dedicated includes Red Hat Premium Support, which can be accessed by using the [Red Hat Customer Portal](https://access.redhat.com/support).
+
+Please see our [Scope of Coverage Page](https://access.redhat.com/support/offerings/production/soc) for [more details](https://access.redhat.com/support/offerings/production/scope_moredetail) on what is covered with included support offering for OpenShift Dedicated.
+
+OpenShift Dedicated support SLAs can be found [here](https://access.redhat.com/support/offerings/openshift/sla).
+
+[id="moa-sd-logging_{context}"]
+== Logging
+
+Red Hat OpenShift Dedicated includes an optional logging stack based on Elasticsearch, Fluentd, and Kibana (EFK). When deployed, a three shard Elasticsearch cluster with 8GB of allocated memory and 4GB heap is deployed with one replica per shard. The logging stack in OpenShift is designed for short-term retention to aid application troubleshooting, not for long-term log archiving.
+
+[id="moa-sd-cluster-operations-logging_{context}"]
+=== Cluster Operations Logging
+
+Red Hat provides services to maintain the health and performance of each OpenShift Dedicated cluster and its components. This includes cluster operations and audit logs. Cluster operations logs are enabled through the optional Cluster Logging Operator and Elasticsearch Operator as described in the [OSD product documentation](https://docs.openshift.com/dedicated/4/logging/dedicated-cluster-deploying.html). When deployed, the cluster will aggregate cluster logs from the OpenShift cluster, nodes, and pods and retain them for 1 hour to assist the SRE team in cluster troubleshooting. Customers are not intended to have access to operations logs. They shall remain under full control of Red Hat.
+
+[id="moa-sd-cluster-audit-logging_{context}"]
+=== Cluster Audit Logging
+
+Cluster Audit logs are always enabled. Audit logs are streamed to a log aggregation system outside the cluster VPC for automated security analysis and secure retention for 90 days. Red Hat controls the log aggregation system. Customers do not have access. Customers may receive a copy of their cluster's audit logs upon request via a support ticket. Audit log requests must specify a date and time range not to exceed 21 days. When requesting audit logs, customers should be aware that audit logs are many GB per day in size.
+
+[id="moa-sd-application-logging_{context}"]
+=== Application Logging
+
+Application logs sent to STDOUT will be collected by Fluentd and made available through the cluster logging stack, if it is installed. Retention is set to 7 days, but will not exceed 200GiB worth of logs per shard. For longer term retention, customers should follow the [sidecar container design](https://kubernetes.io/docs/concepts/cluster-administration/logging/#sidecar-container-with-a-logging-agent) in their deployments and forward logs to the log aggregation or analytics service of their choice.
+
+It is Red Hat's expectation and guidance that application logging workloads are scheduled on a customer's worker nodes. This includes workloads such as ElasticSearch and the Kibana dashboard. Application logging is considered a customer workload given that the rates of logging are different per cluster and per customer.
+
+[id="moa-sd-monitoring_{context}"]
+== Monitoring
+
+[id="moa-sd-cluster-metrics_{context}"]
+=== Cluster Metrics
+
+OpenShift Dedicated clusters come with an integrated Prometheus/Grafana stack for cluster monitoring including CPU, memory, and network-based metrics. This is accessible via the web console and can also be used to view cluster-level status and capacity/usage through a Grafana dashboard. These metrics also allow for horizontal pod autoscaling based on [CPU or memory metrics](https://docs.openshift.com/dedicated/4/nodes/pods/nodes-pods-autoscaling.html#supported-metrics) provided by an OpenShift Dedicated user.
+
+[id="moa-sd-cluster-status-notification_{context}"]
+=== Cluster Status Notification
+
+Red Hat communicates the health and status of OSD clusters through a combination of a cluster dashboard available in the OpenShift Cluster Manager, and email notifications sent to the email address of the contact that originally deployed the cluster.
+
+[id="moa-sd-networking_{context}"]
+== Networking
+
+[id="moa-sd-custom-domains-for-apps_{context}"]
+=== Custom Domains for Applications
+
+To use a custom hostname for a route, you must update your DNS provider by creating a canonical name (CNAME) record. Your CNAME record should map the OpenShift canonical router hostname to your custom domain. The OpenShift canonical router hostname is shown on the Route Details page after a Route is created. Or a wildcard CNAME record can be created once to route all subdomains for a given hostname to the cluster's [router](https://docs.openshift.com/dedicated/4/getting_started/dedicated-networking.html).
+
+[id="moa-sd-custom-domains-for-cluster-services_{context}"]
+=== Custom Domains for Cluster services
+
+Custom domains and subdomains are not available for the platform service routes, e.g., the API or web console routes, or for the default application routes.
+
+[id="moa-sd-domain-validated-certificates_{context}"]
+=== Domain Validated Certificates
+
+OpenShift Dedicated includes TLS security certificates needed for both internal and external services on the cluster. For external routes, there are two, separate TLS wildcard certificates that are provided and installed on each cluster, one for the web console and route default hostnames and the second for the API endpoint. Let’s Encrypt is the certificate authority used for certificates. Routes within the cluster, e.g., the internal [API endpoint](https://kubernetes.io/docs/tasks/access-application-cluster/access-cluster/#accessing-the-api-from-a-pod), use TLS certificates signed by the cluster's built-in certificate authority and require the CA bundle available in every pod for trusting the TLS certificate.
+
+[id="moa-sd-custom-certificate-authority-for-builds_{context}"]
+=== Custom Certificate Authorities for Builds
+
+OpenShift Dedicated supports the use of custom certificate authorities to be trusted by builds when pulling images from an image registry.
+
+[id="moa-sd-load-balancers_{context}"]
+=== Load Balancers
+
+OSD uses up to five different of load balancers: an internal master load balancer, an external master load balancer, an external master load balancer that is only accessible from Red Hat-owned, whitelisted bastion hosts, one external router load balancer, and one internal router load balancer. Optional service-level load balancers may also be purchased to enable non-HTTP/SNI traffic and non-standard ports for services.
+
+1. Internal Master Load Balancer: This load balancer is internal to the cluster and is used to balance traffic for internal cluster communications.
+2. External Master Load Balancer: This load balancer is used for accessing the OpenShift and Kubernetes APIs. This load balancer can be disabled in OCM. If this load balancer is disabled, Red Hat reconfigures the API DNS to point to the internal master load balancer.
+3. External Master Load Balancer for Red Hat: This load balancer is reserved for cluster management by Red Hat. Access is strictly controlled, and communication is only possible from whitelisted bastion hosts.
+4. Default Router/Ingress Load Balancer: This is the default application load balancer, denoted by `apps` in the URL. The default load balancer can be configured in OCM to be either publicly accessible over the Internet, or only privately accessible over a pre-existing [private connection](#network-configuration). All application routes on the cluster are exposed on this default router load balancer, including cluster services such as the logging UI, metrics API, and registry.
+5. Optional Secondary Router/Ingress Load Balancer: This is a secondary application load balancer, denoted by `apps2` in the URL. The secondary load balancer can be configured in OCM to be either publicly accessible over the Internet, or only privately accessible over a pre-existing [private connection](#network-configuration). If a "Label match" is configured for this router load balancer, then only application routes matching this label will be exposed on this router load balancer, otherwise all application routes will _also_ be exposed on this router load balancer.
+6. Optional Load balancers for Services: This can be mapped to a service running on OSD to enable advanced ingress features, such as non-HTTP/SNI traffic or the use of non-standard ports. These can be purchased in groups of 4 for non-CCS clusters or can be provisioned without charge in CCS clusters, however each AWS account has a quota which [limits the number of Classic Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html) that can be used within each cluster. [See: Exposing TCP services](https://docs.openshift.com/dedicated/4/getting_started/dedicated-networking.html#dedicated-exposing-TCP-services_access)
+
+[id="moa-sd-cluster-ingress_{context}"]
+=== Cluster Ingress
+
+Project admins can add [route annotations](https://docs.openshift.com/dedicated/4/networking/routes/route-configuration.html#nw-route-specific-annotations_route-configuration) for many different purposes, including ingress control via IP whitelisting.
+
+Ingress policies can also be changed by using [NetworkPolicy objects](https://docs.openshift.com/dedicated/4/networking/configuring-networkpolicy.html), which leverage the ovs-networkpolicy plugin. This allows for full control over ingress network policy down to the pod level, including between pods on the same cluster and even in the same namespace.
+
+All cluster ingress traffic will go through the defined [load balancers](#load-balancers). Direct access to all nodes is blocked by cloud configuration.
+
+[id="moa-sd-cluster_egress_{context}"]
+=== Cluster Egress
+
+Pod egress traffic control via [EgressNetworkPolicy objects](https://docs.openshift.com/dedicated/4/networking/openshift_sdn/configuring-egress-firewall.html) can be used to prevent or limit outbound traffic in OpenShift Dedicated.
+
+Public outbound traffic from the master and infrastructure nodes is required and is necessary to maintain cluster image security and cluster monitoring. This requires the 0.0.0.0/0 route to belong only to the internet gateway, it is not possible to route this range over private connections.
+
+OpenShift 4 clusters use NAT Gateways to present a public, static IP for any **public** outbound traffic leaving the cluster. Each Availability Zone a cluster is deployed into receives a distinct NAT Gateway, therefore up to 3 unique static IP addresses can exist for cluster egress traffic.  Any traffic that remains inside the cluster or does not go out to the public internet will not pass through the NAT Gateway and will have a source IP address belonging to the node that the traffic originated from. Node IP addresses are dynamic, and therefore a customer should not rely on whitelisting individual IP address when accessing private resources.
+
+Customers can determine their public, static IP address(es) by running a pod on the cluster and then querying an external service. For example:
+
+~~~
+oc run ip-lookup --image=busybox -i -t --restart=Never --rm -- /bin/sh -c "/bin/nslookup -type=a myip.opendns.com resolver1.opendns.com | grep -E 'Address: [0-9.]+'"
+~~~
+
+[id="moa-sd-cloud-network-configuration_{context}"]
+=== Cloud Network Configuration
+
+OpenShift Dedicated allows for the configuration of private network connection through several cloud provider managed technologies:
+
+- VPN connections
+- AWS VPC peering
+- AWS Transit Gateway
+- AWS Direct Connect
+- Google Cloud VPC Network peering
+- Google Cloud Classic VPN
+- Google Cloud HA VPN
+
+No monitoring of these private network connections is provided by Red Hat SRE.  Monitoring these connections is the responsibility of the customer.
+
+[id="moa-sd-DNS-forwarding_{context}"]
+=== DNS Forwarding
+
+For OpenShift Dedicated clusters that have a private cloud network configuration, a customer [may specify](https://docs.openshift.com/dedicated/4/networking/dns-operator.html#nw-dns-forward_dns-operator) internal DNS server(s) available on that private connection that should be queried for explicitly provided domains.
+
+[id="moa-sd-storage_{context}"]
+== Storage
+
+[id="moa-sd-encrypted-at-rest_{context}"]
+=== Encrypted-at-rest OS/node storage
+
+Master nodes use encrypted-at-rest EBS storage.
+
+[id="moa-sd-encrypted-at-rest-pv_{context}"]
+=== Encrypted-at-rest PV
+
+EBS volumes used for persistent volumes are encrypted-at-rest by default.
+
+[id="moa-sd-block-storage-rwo_{context}"]
+=== Block Storage (RWO)
+
+Persistent volumes are backed by block storage (AWS EBS and Google Cloud persistent disk), which is Read-Write-Once. On an OSD base cluster, 100GB of block storage is provided for persistent volumes, which is dynamically provisioned and recycled based on application requests. Additional persistent storage can be purchased in 500GB increments.
+
+Persistent volumes can only be attached to a single node at a time and are specific to the availability zone in which they were provisioned, but they can be attached to any node in the  availability zone.
+
+Each cloud provider has its own limits for how many PVs can be attached to a single node. See [AWS Instance Type Limits](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/volume_limits.html#instance-type-volume-limits) or [Google Cloud custom machine types](https://cloud.google.com/compute/docs/machine-types#custom_machine_types) for details.
+
+[id="moa-sd-shared-storage-rwx_{context}"]
+=== Shared Storage (RWX)
+
+Shared storage is not available on OpenShift Dedicated at this time.
+
+[id="moa-sd-platform_{context}"]
+== Platform
+
+[id="moa-sd-cluster-backup-policy_{context}"]
+=== Cluster Backup Policy
+
+**⚠️ It is critical that customers have a backup plan for their applications and application data.**
+
+Application and application data backups are not a part of the OpenShift Dedicated service.
+All Kubernetes objects and PVs in each OpenShift Dedicated cluster are backed up to facilitate a prompt recovery in the unlikely event that a cluster becomes irreparably inoperable.
+
+The backups are stored in a secure object storage (Multi Availability Zone) bucket in the same account as the cluster.
+Node root volumes are not backed up as Red Hat Enterprise Linux CoreOS is fully managed by the OpenShift Container Platform cluster and no stateful data should be stored on a node's root volume.
+
+The following table shows the frequency of backups:
+
+|                 Component                  |         Snapshot Frequency          | Retention  |                                             Notes                                              |
+|--------------------------------------------|-------------------------------------|------------|------------------------------------------------------------------------------------------------|
+| Full object store backup, all cluster PVs  | Daily at 0100 UTC                   | 7 days     | This is a full backup of all kubernetes objects, as well as all mounted PVs in the cluster.    |
+| Full object store backup, all cluster PVs  | Weekly on Mondays at 0200 UTC       | 30 days    | This is a full backup of all kubernetes objects, as well as all mounted PVs in the cluster.    |
+| Full object store backup                   | Hourly at 17 minutes past the hour  | 24 hours   | This is a full backup of all kubernetes objects. No PVs are backed up in this backup schedule. |
+
+[id="moa-sd-auto-scaling_{context}"]
+=== Auto Scaling
+
+Node autoscaling is not available on OpenShift Dedicated at this time.
+
+[id="moa-sd-daemonsets_{context}"]
+=== DaemonSets
+
+Customers may create and run DaemonSets on OpenShift Dedicated. In order to restrict DaemonSets to only running on worker nodes, use the following nodeSelector:
+
+~~~
+...
+spec:
+  nodeSelector:
+    role: worker
+...
+~~~
+
+[id="moa-sd-multi-az_{context}"]
+=== Multi-AZ {#multi-az}
+
+In a multiple availability zone cluster, master nodes are distributed across AZs and at least three worker nodes are required in each AZ.
+
+[id="moa-sd-node-labels_{context}"]
+=== Node Labels
+
+Custom node labels are created by Red Hat during node creation and cannot be changed on OpenShift Dedicated clusters at this time.
+
+[id="moa-sd-openshift-version_{context}"]
+=== OpenShift Version
+
+OpenShift Dedicated is run as a service and is kept up-to-date with the latest OpenShift Container Platform version.
+
+[id="moa-sd-upgrades_{context}"]
+==== Upgrades
+
+Patch level (also known as z-stream; x.y.Z) updates are applied automatically the week following their release as long as OSD-specific end-to-end tests pass.
+
+Minor version updates (x.Y.z) may include Kubernetes version upgrades and/or API changes. Therefore, customers are notified by email two weeks in advance before these upgrades are automatically applied.
+
+[id="moa-sd-windows-containers_{context}"]
+=== Windows containers
+
+Window containers are not available on OpenShift Dedicated at this time.
+
+[id="moa-sd-container-engine_{context}"]
+=== Container Engine
+
+OpenShift Dedicated runs on OpenShift 4 and uses [CRI-O](https://www.redhat.com/en/blog/red-hat-openshift-container-platform-4-now-defaults-cri-o-underlying-container-engine) as the only available container engine.
+
+[id="moa-sd-operating-system_{context}"]
+=== Operating System
+
+OpenShift Dedicated runs on OpenShift 4 and uses Red Hat Enterprise Linux CoreOS as the operating system for all master and worker nodes.
+
+[id="moa-sd-kubernetes-operator-support_{context}"]
+=== Kubernetes Operator Support {#operator-support}
+
+OpenShift Dedicated supports non-privileged Operators created by Red Hat and Certified ISVs.
+
+[id="moa-sd-security_{context}"]
+== Security
+
+[id="moa-sd-authentication-provider_{context}"]
+=== Authentication Provider {#auth-provider}
+
+Authentication for the cluster is configured as part of the [OpenShift Cluster Manager](https://cloud.redhat.com/openshift) cluster creation process. OpenShift is not an identity provider, and all access to the cluster must be managed by the customer as part of their integrated solution. Multiple identity providers provisioned at the same time is supported. The following identity providers are supported:
+
+* OpenID Connect
+* Google OAuth
+* GitHub OAuth
+* LDAP
+
+[id="moa-sd-privileged-containers_{context}"]
+=== Privileged Containers
+
+Privileged containers are not supported on OSD.  To enable Red Hat to operate OpenShift Dedicated as a managed service with an SLA, some restrictions are enforced to limit the ability of rogue or accidental changes that could impact the service.
+
+[id="moa-sd-customer-admin-user_{context}"]
+=== Customer Admin User
+
+In addition to normal users, OpenShift Dedicated provides access to an OSD-specific Group called dedicated-admins. Any users on the cluster that are members of the dedicated-admins group:
+
+* Have admin access to all customer-created projects on the cluster
+* Can manage resource quotas and limits on the cluster
+* Can add/manage NetworkPolicy objects
+* Are able to view information about specific nodes and PVs in the cluster, including scheduler information
+* Can access the reserved ‘dedicated-admin’ project on the cluster, which allows for the creation of ServiceAccounts with elevated privileges and gives the ability to update default limits and quotas for projects on the cluster.
+
+For more specific information on the dedicated-admin role, please see <https://docs.openshift.com/dedicated/getting_started/dedicated_administrators.html>.
+
+[id="moa-sd-project-self-service_{context}"]
+=== Project Self-service
+
+All users, by default, have the ability to create, update, and delete their projects. This can be restricted if a member of the dedicated-admins group removes the self-provisioner role from authenticated users:
+
+~~~
+oc adm policy remove-cluster-role-from-group self-provisioner system:authenticated:oauth
+~~~
+
+This can be reverted by applying:
+
+~~~
+oc adm policy add-cluster-role-to-group self-provisioner system:authenticated:oauth
+~~~
+
+[id="moa-sd-regulatory_compliance_{context}"]
+=== Regulatory Compliance
+
+Red Hat OpenShift Dedicated is certified SOC2 Type 1 on AWS.
+
+[id="moa-sd-network-security_{context}"]
+=== Network Security
+
+With OSD on AWS, AWS does provide a standard DDoS protection on all Load Balancers, called AWS Shield. This provides 95% protection against most commonly used level 3 and 4 attacks on all the public facing Load Balancers used for OpenShift Dedicated. We also add a timeout for http requests coming to our haproxy router of 10 secs within which to get response or connection is closed to provide additional protection.
