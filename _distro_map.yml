@@ -140,7 +140,7 @@ openshift-aro:
       name: '4'
       dir: aro/4
 openshift-moa:
-  name: Amazon Red Hat OpenShift
+  name: Amazon Managed Red Hat OpenShift
   author: OpenShift Documentation Project <openshift-docs@redhat.com>
   site: commercial
   site_name: Documentation
