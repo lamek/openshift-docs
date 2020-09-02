@@ -53,6 +53,8 @@ Distros: openshift-moa
 Topics:
 - Name: Creating your first cluster
   File: creating-first-moa-cluster
+- Name: AWS quota requirements
+  File: moa-aws-quota-requirements
 ---
 Name: Cloud infrastructure access
 Dir: cloud_infrastructure_access

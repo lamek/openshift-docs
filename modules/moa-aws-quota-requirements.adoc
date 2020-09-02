@@ -1,0 +1,9 @@
+// Module included in the following assemblies:
+//
+// getting_started_moa/moa-aws-quota-requirements.adoc
+
+
+[id="moa-aws-quota-requirements"]
+= AWS quota requirements for {product-title}
+
+What do we want to say here?

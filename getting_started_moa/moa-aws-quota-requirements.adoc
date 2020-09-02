@@ -1,0 +1,12 @@
+[id="moa-aws-quota-requirements"]
+= AWS quota requirements for creating an {product-title} cluster
+include::modules/common-attributes.adoc[]
+:context: moa-aws-quota-requirements
+
+toc::[]
+
+This guide covers the AWS quota requirements for creating an {product-title} cluster.
+
+If you need to increase your quota, navigate to your link:https://aws.amazon.com/console/[AWS console], and request a quota increase for the service that failed.
+
+include::modules/moa-aws-quota-requirements.adoc[leveloffset=+1]
