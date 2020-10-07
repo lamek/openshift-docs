@@ -1,0 +1,27 @@
+// Module included in the following assemblies:
+//
+// * cli_reference/moactl/get-started-with-moactl.adoc
+
+[id="moactl-get-set-up_{context}"]
+= Get set up with moactl
+
+The following commands help you get set up with `moactl`.
+
+[id="moactl-completion-synopss_{context}"]
+== Download moactl
+
+Download the latest release of `moactl` for your operating system from link:https://github.com/openshift/moactl/releases/latest[the `moactl` releases page on GitHub].
+
+After downloading a release, you can optionally rename the executable file you download to `moactl`, and then add `moactl` to your path.
+
+[id="moactl-completion_{context}"]
+== moactl completion
+
+The following command enables bash completion for `moactl`. The command generates a bash completion file for `moactl` and sources it to your current shell session.
+
+To configure your bash shell to load `moactl` completions for each session, add the command to your `bashrc` file.
+
+[source,terminal]
+----
+$ . <(moactl completion)
+----

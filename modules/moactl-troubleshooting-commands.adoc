@@ -1,0 +1,18 @@
+// Module included in the following assemblies:
+//
+// * cli_reference/moactl/troubleshoot-with-moactl.adoc
+
+[id="moactl-initialize_{context}"]
+= Troubleshooting with moactl
+
+Use the following command to initialize `moactl`.
+
+[id="moactl-whoami_{context}"]
+== moactl whoami
+
+Check the configuration details of your `moactl` client.
+
+[id="moactl-version_{context}"]
+== moactl version
+
+Check the version of your `moactl` client.

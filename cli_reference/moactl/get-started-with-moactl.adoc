@@ -1,0 +1,12 @@
+[id="get-started-with-moactl"]
+
+= Get started with moactl
+include::modules/common-attributes.adoc[]
+:context: get-started-with-moactl
+
+toc::[]
+
+include::modules/moactl-about.adoc[leveloffset=+1]
+include::modules/moactl-get-set-up.adoc[leveloffset=+1]
+include::modules/moactl-configure.adoc[leveloffset=+1]
+include::modules/moactl-initialize.adoc[leveloffset=+1]

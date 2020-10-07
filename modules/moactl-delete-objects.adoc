@@ -1,0 +1,33 @@
+// Module included in the following assemblies:
+//
+// * cli_reference/moactl/manage-objects-with-moactl.adoc
+
+[id="moactl-delete-objects{context}"]
+= Delete objects
+
+TBD
+
+[id="moactl-delete_{context}"]
+== moactl delete
+
+TBD
+
+[id="moactl-delete-cluster_{context}"]
+== moactl delete cluster
+
+TBD
+
+[id="moactl-delete-ingress_{context}"]
+== moactl delete ingress
+
+TBD
+
+[id="moactl-delete-idp_{context}"]
+== moactl delete idp
+
+TBD
+
+[id="moactl-delete-user_{context}"]
+== moactl delete user
+
+TBD

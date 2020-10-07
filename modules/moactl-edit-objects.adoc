@@ -1,0 +1,23 @@
+// Module included in the following assemblies:
+//
+// * cli_reference/moactl/manage-objects-with-moactl.adoc
+
+[id="moactl-edit-objects{context}"]
+= Edit objects
+
+TBD
+
+[id="moactl-edit{context}"]
+== moactl edit
+
+TBD
+
+[id="moactl-edit-cluster_{context}"]
+== moactl edit cluster
+
+TBD
+
+[id="moactl-edit-ingress_{context}"]
+== moactl edit ingress
+
+TBD

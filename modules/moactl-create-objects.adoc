@@ -1,0 +1,33 @@
+// Module included in the following assemblies:
+//
+// * cli_reference/moactl/manage-objects-with-moactl.adoc
+
+[id="moactl-create-objects{context}"]
+= Create objects
+
+TBD
+
+[id="moactl-create_{context}"]
+== moactl create 
+
+TBD
+
+[id="moactl-create-cluster_{context}"]
+== moactl create cluster
+
+TBD
+
+[id="moactl-create-ingress_{context}"]
+== moactl create ingress
+
+TBD
+
+[id="moactl-create-idp_{context}"]
+== moactl create idp
+
+TBD
+
+[id="moactl-create-user_{context}"]
+== moactl create user
+
+TBD

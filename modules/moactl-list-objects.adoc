@@ -1,0 +1,48 @@
+// Module included in the following assemblies:
+//
+// * cli_reference/moactl/manage-objects-with-moactl.adoc
+
+[id="moactl-list-objects{context}"]
+= List and describe objects
+
+TBD
+
+[id="moactl-list_{context}"]
+== moactl list
+
+TBD
+
+[id="moactl-list-clusters_{context}"]
+== moactl list clusters
+
+TBD
+
+[id="moactl-list-ingresses_{context}"]
+== moactl list ingresses
+
+TBD
+
+[id="moactl-list-idps_{context}"]
+== moactl list idps
+
+TBD
+
+[id="moactl-list-users_{context}"]
+== moactl list users
+
+TBD
+
+[id="moactl-list-regions_{context}"]
+== moactl list regions
+
+TBD
+
+[id="moactl-list-versions_{context}"]
+== moactl list versions
+
+TBD
+
+[id="moactl-describe-cluster_{context}"]
+== moactl describe cluster
+
+TBD

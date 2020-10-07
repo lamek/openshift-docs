@@ -1,0 +1,13 @@
+// Module included in the following assemblies:
+//
+// * cli_reference/moactl/get-started-with-moactl.adoc
+
+[id="moactl-about_{context}"]
+= About moactl
+
+`moactl` is the the Amazon Red Hat OpenShift command line utility. You can use `moactl` to create, update, manage, and delete {product-title} clusters and resources.
+
+[NOTE]
+====
+The name `moactl` comes from and earlier developmental name of the {product-title} product.
+====

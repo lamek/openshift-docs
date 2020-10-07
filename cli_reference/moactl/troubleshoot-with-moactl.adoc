@@ -1,0 +1,10 @@
+[id="troubleshoot-with-moactl"]
+
+= Troubleshoot with moactl
+include::modules/common-attributes.adoc[]
+:context: troubleshoot-with-moactl
+
+toc::[]
+
+include::modules/moactl-troubleshooting-commands.adoc[leveloffset=+1]
+include::modules/moactl-logs.adoc[leveloffset=+1]

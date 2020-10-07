@@ -1,0 +1,18 @@
+// Module included in the following assemblies:
+//
+// * cli_reference/moactl/troubleshoot-with-moactl.adoc
+
+[id="moactl-logs_{context}"]
+= Checking logs with moactl
+
+Use the following commands to check your install and uninstall logs `moactl`.
+
+[id="moactl-logs-install_{context}"]
+== moactl logs install
+
+Check the install logs.
+
+[id="moactl-logs-uninstall_{context}"]
+== moactl logs uninstall
+
+Check the uninstall logs.

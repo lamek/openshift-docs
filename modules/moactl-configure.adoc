@@ -1,0 +1,77 @@
+// Module included in the following assemblies:
+//
+// * cli_reference/moactl/get-started-with-moactl.adoc
+
+[id="moactl-configure_{context}"]
+= Configure moactl
+
+Use the following commands to configure `moactl`.
+
+[id="moactl-login_{context}"]
+== moactl login
+
+Log in to your Red Hat account, saving the credentials to the `moactl` configuration file. You must provide a token when logging in. You can copy your token by from link:https://cloud.redhat.com/openshift/token/moa[the {product-title} token page].
+
+[source,terminal]
+----
+$ moactl login
+----
+
+`moactl` will look for a token in the following priority order:
+
+* command-line flags
+* The `MOA_TOKEN` environment variable
+* The `moactl` configuration file
+* Interactively from a command-line prompt
+
+[id="moactl-logout_{context}"]
+== moactl logout
+
+Log out of `moactl`. Logging out removes the `moactl` configuration file.
+
+[source,terminal]
+----
+$ moactl logout
+----
+
+[id="moactl-verify-permissions_{context}"]
+== moactl verify permissions
+
+Verify the AWS permissions required to create a `moactl` cluster are configured correctly.
+
+[source,terminal]
+----
+$ moactl verify permissions
+----
+
+[id="moactl-verify-quota_{context}"]
+== moactl verify quota
+
+Verify the AWS quota required to create a cluster is available in your AWS account.
+
+[source,terminal]
+----
+$ moactl verify quota
+----
+
+[id="moactl-verify-ocp-client_{context}"]
+== moactl verify openshift-client
+
+Verify the OpenShift Container Platform command-line interface (`oc`) is installed correctly.
+
+[source,terminal]
+----
+$ moactl verify openshift-client
+----
+
+[id="moactl-download-ocp-client_{context}"]
+== moactl download openshift-client
+
+Download the OpenShift Container Platform command-line interface (`oc`).
+
+[source,terminal]
+----
+$ moactl download openshift-client
+----
+
+After downloading `oc`, you must unzip the archive and add it to your path.

@@ -1527,6 +1527,16 @@ Name: CLI tools
 Dir: cli_reference
 Distros: openshift-*
 Topics:
+- Name: moactl
+  Dir: moactl
+  Distros: openshift-moa
+  Topics:
+  - Name: Get started with moactl
+    File: get-started-with-moactl
+  - Name: Manage objects with moactl
+    File: manage-objects-with-moactl
+  - Name: Troubleshoot with moactl
+    File: troubleshoot-with-moactl
 - Name: OpenShift CLI (oc)
   Dir: openshift_cli
   Topics:

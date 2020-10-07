@@ -1,0 +1,12 @@
+[id="manage-objects-with-moactl"]
+
+= Manage objects with moactl
+include::modules/common-attributes.adoc[]
+:context: manage-objects-with-moactl
+
+toc::[]
+
+include::modules/moactl-create-objects.adoc[leveloffset=+1]
+include::modules/moactl-list-objects.adoc[leveloffset=+1]
+include::modules/moactl-edit-objects.adoc[leveloffset=+1]
+include::modules/moactl-delete-objects.adoc[leveloffset=+1]
