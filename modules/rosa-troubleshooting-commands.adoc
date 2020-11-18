@@ -1,0 +1,18 @@
+// Module included in the following assemblies:
+//
+// * cli_reference/rosa_cli/troubleshoot-with-rosa.adoc
+
+[id="rosa-initialize_{context}"]
+= Troubleshooting with rosa
+
+Use the following command to initialize `rosa`.
+
+[id="rosa-whoami_{context}"]
+== rosa whoami
+
+Check the configuration details of your `rosa` client.
+
+[id="rosa-version_{context}"]
+== rosa version
+
+Check the version of your `rosa` client.
