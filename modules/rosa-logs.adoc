@@ -1,0 +1,18 @@
+// Module included in the following assemblies:
+//
+// * cli_reference/rosa_cli/troubleshoot-with-rosa.adoc
+
+[id="rosa-logs_{context}"]
+= Checking logs with rosa
+
+Use the following commands to check your install and uninstall logs `rosa`.
+
+[id="rosa-logs-install_{context}"]
+== rosa logs install
+
+Check the install logs.
+
+[id="rosa-logs-uninstall_{context}"]
+== rosa logs uninstall
+
+Check the uninstall logs.

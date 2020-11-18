@@ -1,0 +1,33 @@
+// Module included in the following assemblies:
+//
+// * cli_reference/rosa_cli/manage-objects-with-rosa.adoc
+
+[id="rosa-create-objects{context}"]
+= Create objects
+
+TBD
+
+[id="rosa-create_{context}"]
+== rosa create 
+
+TBD
+
+[id="rosa-create-cluster_{context}"]
+== rosa create cluster
+
+TBD
+
+[id="rosa-create-ingress_{context}"]
+== rosa create ingress
+
+TBD
+
+[id="rosa-create-idp_{context}"]
+== rosa create idp
+
+TBD
+
+[id="rosa-create-user_{context}"]
+== rosa create user
+
+TBD

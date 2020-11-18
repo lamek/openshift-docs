@@ -1,0 +1,23 @@
+// Module included in the following assemblies:
+//
+// * cli_reference/rosa_cli/manage-objects-with-rosa.adoc
+
+[id="rosa-edit-objects{context}"]
+= Edit objects
+
+TBD
+
+[id="rosa-edit{context}"]
+== rosa edit
+
+TBD
+
+[id="rosa-edit-cluster_{context}"]
+== rosa edit cluster
+
+TBD
+
+[id="rosa-edit-ingress_{context}"]
+== rosa edit ingress
+
+TBD

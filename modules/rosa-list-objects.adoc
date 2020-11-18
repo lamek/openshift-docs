@@ -1,0 +1,48 @@
+// Module included in the following assemblies:
+//
+// * cli_reference/rosa_cli/manage-objects-with-rosa.adoc
+
+[id="rosa-list-objects{context}"]
+= List and describe objects
+
+TBD
+
+[id="rosa-list_{context}"]
+== rosa list
+
+TBD
+
+[id="rosa-list-clusters_{context}"]
+== rosa list clusters
+
+TBD
+
+[id="rosa-list-ingresses_{context}"]
+== rosa list ingresses
+
+TBD
+
+[id="rosa-list-idps_{context}"]
+== rosa list idps
+
+TBD
+
+[id="rosa-list-users_{context}"]
+== rosa list users
+
+TBD
+
+[id="rosa-list-regions_{context}"]
+== rosa list regions
+
+TBD
+
+[id="rosa-list-versions_{context}"]
+== rosa list versions
+
+TBD
+
+[id="rosa-describe-cluster_{context}"]
+== rosa describe cluster
+
+TBD
